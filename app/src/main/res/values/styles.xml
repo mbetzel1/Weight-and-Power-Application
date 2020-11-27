@@ -1,0 +1,89 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorOnPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorSurface">@color/blackBackgroundColor</item>
+        <item name="colorOnBackground">@color/textWhiteColor</item>
+        <item name="android:colorBackground">@color/colorBackgroundGrey</item>
+        <item name="colorOnSurface">@color/textStaticColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="popupMenuBackground">@drawable/rounded_corner</item>
+    </style>
+    <style name="TextViewConfig">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:ems">10</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColorPrimary">@color/textStaticColor</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="elevation">10dp</item>
+    </style>
+    <style name="EditTextNumber">
+        <item name="android:inputType">numberSigned</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColorPrimary">@color/textWhiteColor</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="elevation">10dp</item>
+        <item name="color">@android:color/transparent</item>
+        <item name="background">@drawable/rounded_corner</item>
+    </style>
+    <style name="LinearRowConfig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+    </style>
+    <style name="SpinnerConfig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:ems">6</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/textWhiteColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="color">@android:color/transparent</item>
+        <item name="background">@drawable/rounded_corner</item>
+        <item name="popupMenuBackground">@color/colorPrimaryVariant</item>
+    </style>
+    <style name="TextWeightRow">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/textWhiteColor</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="TextViewRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/textlines</item>
+        <item name="android:ems">10</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColorPrimary">@color/textStaticColor</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="background">@drawable/border</item>
+    </style>
+</resources>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".WPTab"
+    android:id="@+id/myFrameLayout2">
+    <!--
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/power_calc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:fabSize="normal"
+        android:layout_margin="40dp"
+        android:src="@mipmap/calc_foreground"
+        android:backgroundTint="@color/colorAccent"
+        android:elevation="@android:dimen/thumbnail_height"/>
+        -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/myConstraintLayout2">
+        <TextView
+            android:id="@+id/weight_for_powertab"
+            android:text="Mission Gross Weight"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintTop_toTopOf="@id/myConstraintLayout2"
+            app:layout_constraintBottom_toTopOf="@id/drag_for_powertab"
+            android:background="@drawable/textlines"/>
+        <TextView
+            android:id="@+id/drag_for_powertab"
+            android:text="Total Drag"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintTop_toBottomOf="@id/weight_for_powertab"
+            app:layout_constraintBottom_toTopOf="@id/wpScrollView"
+            android:background="@drawable/textlines"/>
+        <ScrollView
+            android:id="@+id/wpScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/drag_for_powertab"
+            app:layout_constraintBottom_toTopOf="@+id/wp_calc_row"
+            android:scrollbars="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Weather"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <Button
+                        android:id="@+id/icao_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Load Daily Maxes"
+                        android:layout_weight="0.5"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/round_corner2"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@color/textWhiteColor" />
+                    <Spinner
+                        android:id="@+id/icao_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        style="@style/SpinnerConfig"
+                        android:popupBackground="@color/blackBackgroundColor"/>
+                </LinearLayout>
+                <LinearLayout
+                style="@style/LinearRowConfig" >
+                <TextView
+                    android:id="@+id/temperature"
+                    android:text="Max Temp"
+                    style="@style/TextViewConfig"/>
+                <EditText
+                    android:id="@+id/temp_input"
+                    style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/pressalt"
+                        android:text="Pressure Altitude"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/pressalt_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/densalt"
+                        android:text="Density Altitude"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/densalt_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="All Engines Operating"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="HOGE"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/hoge"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="HIGE"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/hige"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="90% HOGE"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/ten_percent"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Fuel to Burn"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/fuel_to_burn"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Max Cont Q"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/max_cont"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Intermediate Q"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/intermediate"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="End Q/FF"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/max_end"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Rng Q/FF"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/max_range"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="One Engine Inoperative"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Contingency Q"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/single_eng"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Min SE A/S"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/single_min_kias"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Max SE A/S"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/single_eng_max_kias"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Max GW HOGE"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/single_eng_hoge"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Max GW HIGE"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/single_hige"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Accel Limits"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Max Nz"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/max_accel"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:text="Ps = 0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/ps"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@+id/wpScrollView"
+            app:layout_constraintBottom_toBottomOf="@+id/myConstraintLayout2"
+            android:layout_width="match_parent"
+            android:id="@+id/wp_calc_row"
+            style="@style/LinearRowConfig">
+            <Button
+                android:id="@+id/wp_calc_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Calculate"
+                android:layout_weight="1.0"
+                android:layout_margin="5dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/textWhiteColor" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

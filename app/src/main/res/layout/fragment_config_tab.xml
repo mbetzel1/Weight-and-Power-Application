@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ConfigTab"
+    android:id="@+id/myframelayout">
+    <!--
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/calc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="40dp"
+        app:fabSize="normal"
+        android:src="@mipmap/calc_foreground"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="@android:dimen/thumbnail_height"/>
+        -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/op_weight"
+            android:text="Operating Weight"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/zf_weight"
+            android:background="@drawable/textlines"/>
+        <TextView
+            android:id="@+id/zf_weight"
+            android:text="Zero Fuel Weight"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintTop_toBottomOf="@+id/op_weight"
+            app:layout_constraintBottom_toTopOf="@id/gross_weight"
+            android:background="@drawable/textlines"/>
+        <TextView
+            android:id="@+id/gross_weight"
+            android:text="Gross Weight"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintBottom_toTopOf="@id/mission_weight"
+            app:layout_constraintTop_toBottomOf="@+id/zf_weight"
+            android:background="@drawable/textlines"/>
+        <TextView
+            android:id="@+id/mission_weight"
+            android:text="Mission Gross Weight"
+            style="@style/TextWeightRow"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:layout_constraintTop_toBottomOf="@id/gross_weight"
+            app:layout_constraintBottom_toTopOf="@id/myScrollView"
+            android:background="@drawable/textlines"/>
+        <ScrollView
+            android:id="@+id/myScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/mission_weight"
+            app:layout_constraintBottom_toTopOf="@+id/calc_row"
+            android:scrollbars="vertical">
+            <LinearLayout
+                app:layout_constraintTop_toTopOf="@+id/myScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Load/Save/Delete Config"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/button_row"
+                    style="@style/LinearRowConfig">
+                    <Button
+                        android:id="@+id/load_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Load Configuration"
+                        android:layout_weight="0.5"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@color/textWhiteColor" />
+                    <Spinner
+                        android:id="@+id/load_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        style="@style/SpinnerConfig"
+                        android:popupBackground="@color/blackBackgroundColor"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/save_row"
+                    style="@style/LinearRowConfig">
+                    <Button
+                        android:id="@+id/save_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Save Configuration"
+                        android:layout_weight="0.5"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@color/textWhiteColor"/>
+                    <EditText
+                        android:id="@+id/config_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/EditTextNumber"
+                        android:inputType="text"
+                        android:layout_weight="0.5"
+                        android:hint="Set Configuration Name"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/del_row"
+                    style="@style/LinearRowConfig">
+                    <Button
+                        android:id="@+id/del_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Delete Configuration"
+                        android:layout_weight="0.5"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_corner"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@color/textWhiteColor" />
+                    <Spinner
+                        android:id="@+id/del_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        style="@style/SpinnerConfig"
+                        android:popupBackground="@color/blackBackgroundColor"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Aircraft Configuration"
+                    android:textAlignment="center"/>
+                <RadioGroup
+                    android:id="@+id/doors_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    style="@style/LinearRowConfig">
+                    <RadioButton
+                        android:id="@+id/open_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="Doors Open"
+                        android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/closed_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="Doors Closed"/>
+                </RadioGroup>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/r_das"
+                        android:text="R DAS"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/r_das_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/l_das"
+                        android:text="L DAS"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/l_das_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/r_gun"
+                        android:text="R Gun"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/r_gun_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/l_gun"
+                        android:text="L Gun"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/l_gun_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/r_pod"
+                        android:text="R Pod"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/r_pod_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/l_pod"
+                        android:text="L Pod"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp"/>
+                    <Spinner
+                        android:id="@+id/l_pod_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/r_rocket"
+                        android:text="R Rkt"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp" />
+                    <Spinner
+                        android:id="@+id/r_rocket_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/r_rocket_row"
+                    style="@style/LinearRowConfig" >
+                    <EditText
+                        android:id="@+id/r_rocket_number"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/r_rocket_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/l_rocket"
+                        android:text="L Rkt"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:textSize="12sp" />
+                    <Spinner
+                        android:id="@+id/l_rocket_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/SpinnerConfig"
+                        android:layout_weight="0.8"
+                        android:popupBackground="@color/blackBackgroundColor"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_rocket_row"
+                    style="@style/LinearRowConfig" >
+                    <EditText
+                        android:id="@+id/l_rocket_number"
+                        style="@style/EditTextNumber"
+                        android:layout_weight="0.5"/>
+                    <TextView
+                        android:id="@+id/l_rocket_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/aircraft_row"
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        android:id="@+id/baw"
+                        style="@style/TextViewConfig"
+                        android:text="Side Number" />
+
+                    <EditText
+                        android:id="@+id/side_number"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Weight Calculations"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    style="@style/LinearRowConfig">
+                    <TextView
+                        style="@style/TextViewConfig"
+                        android:text="Basic Weight"/>
+                    <EditText
+                        android:id="@+id/baw_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/pilots_row"
+                    style="@style/LinearRowConfig" >
+
+                    <TextView
+                        android:id="@+id/pilot_copilot"
+                        android:text="Pilot/Copilot"
+                        style="@style/TextViewConfig"/>
+
+                    <EditText
+                        android:id="@+id/pilot_copilot_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/crew_row"
+                    style="@style/LinearRowConfig" >
+
+                    <TextView
+                        android:id="@+id/crew"
+                        android:text="Crewmembers"
+                        style="@style/TextViewConfig"/>
+
+                    <EditText
+                        android:id="@+id/crew_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Mission Equipment"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/total_das_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_das_text"
+                        android:text="Total DAS Wt"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_das_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/seats_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/seats"
+                        android:text="Crew Seats (21 Each)"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/seats_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Weapons"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/total_17_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_17_text"
+                        android:text="GAU-17"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_17_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/total_21_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_21_text"
+                        android:text="GAU-21"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_21_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/total_240_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_240_text"
+                        android:text="M240"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_240_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/total_pod_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_pod_text"
+                        android:text="LAU-68/61"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_pod_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/other_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/other"
+                        android:text="Other"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.2"
+                        android:layout_gravity="center"/>
+                    <LinearLayout
+                        android:id="@+id/other_weights_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Gantry 150"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hoist 180"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hook 65"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Raft 70"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/other_input"
+                        style="@style/EditTextNumber"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Ordnance"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/total_rocket_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/total_rocket"
+                        android:text="Total Rockets Wt"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/total_rocket_output"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.5"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/seven_six_two_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/seven_six_two"
+                        android:text="7.62mm"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/seven_six_two_number"
+                        style="@style/EditTextNumber"
+                        android:layout_weight="0.25"/>
+                    <TextView
+                        android:id="@+id/seven_six_two_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.25"/>
+                </LinearLayout>
+                <LinearLayout
+                android:id="@+id/fifty_cal_row"
+                style="@style/LinearRowConfig" >
+                <TextView
+                    android:id="@+id/fifty_cal"
+                    android:text=".50 Cal"
+                    style="@style/TextViewConfig"/>
+                <EditText
+                    android:id="@+id/fifty_cal_number"
+                    style="@style/EditTextNumber"
+                    android:layout_weight="0.25"/>
+                <TextView
+                    android:id="@+id/fifty_cal_total"
+                    android:text="0"
+                    style="@style/TextViewConfig"
+                    android:layout_weight="0.25"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Expendables"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/chaff_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/chaff"
+                        android:text="RR-129 / 144"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/chaff_number"
+                        style="@style/EditTextNumber"
+                        android:layout_weight="0.25"/>
+                    <TextView
+                        android:id="@+id/chaff_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.25"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/flare_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/flare"
+                        android:text="MJU-32 / 49"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/flare_number"
+                        style="@style/EditTextNumber"
+                        android:layout_weight="0.25"/>
+                    <TextView
+                        android:id="@+id/flare_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.25"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/sm_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/sm"
+                        android:text="SM-875"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/sm_number"
+                        style="@style/EditTextNumber"
+                        android:layout_weight="0.25"/>
+                    <TextView
+                        android:id="@+id/sm_total"
+                        android:text="0"
+                        style="@style/TextViewConfig"
+                        android:layout_weight="0.25"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Fuel"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/fuel_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/fuel"
+                        android:text="Internal Fuel"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/fuel_input"
+                        style="@style/EditTextNumber" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/exfuel_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/exfuel"
+                        android:text="Aux Fuel"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/exfuel_input"
+                        style="@style/EditTextNumber" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/textWhiteColor"
+                    android:textColor="@color/blackBackgroundColor"
+                    android:text="Mission"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:id="@+id/pax_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/pax"
+                        android:text="Passenger(s)"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/pax_input"
+                        style="@style/EditTextNumber" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cargo_row"
+                    style="@style/LinearRowConfig" >
+                    <TextView
+                        android:id="@+id/cargo"
+                        android:text="Cargo"
+                        style="@style/TextViewConfig"/>
+                    <EditText
+                        android:id="@+id/cargo_input"
+                        style="@style/EditTextNumber" />
+                </LinearLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+            </LinearLayout>
+        </ScrollView>
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@+id/myScrollView"
+                app:layout_constraintBottom_toBottomOf="@+id/myConstraintLayout"
+                android:layout_width="match_parent"
+                android:id="@+id/calc_row"
+                style="@style/LinearRowConfig">
+                <Button
+                    android:id="@+id/calc_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Calculate"
+                    android:layout_weight="1.0"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="@color/textWhiteColor" />
+            </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
